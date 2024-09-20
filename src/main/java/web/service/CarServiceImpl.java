@@ -2,9 +2,9 @@ package web.service;
 
 import org.springframework.stereotype.Service;
 import web.model.Car;
-
 import java.util.ArrayList;
 import java.util.List;
+
 @Service
 public class CarServiceImpl implements CarService {
 
@@ -17,9 +17,9 @@ public class CarServiceImpl implements CarService {
         for (int i = 0; i < value && i < cars.size(); i++) {
             result.add(cars.get(i));
         }
-
         return result;
     }
+
     @Override
     public void createListOfCars() {
         if (cars.isEmpty()) {
@@ -30,5 +30,4 @@ public class CarServiceImpl implements CarService {
             cars.add(new Car(5,5, "model5"));
         }
     }
-
 }

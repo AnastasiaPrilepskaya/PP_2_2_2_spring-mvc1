@@ -7,20 +7,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import web.model.Car;
 import web.service.CarService;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 public class CarController {
 
+    private final CarService carService;
+
     @Autowired
-    private CarService carService;
+    public CarController(CarService carService) {
+        this.carService = carService;
+    }
 
-
-    @GetMapping(value = "/cars/{i}")
-    public String printCarsList(ModelMap model, @PathVariable int i) {
-        List<Car> cars = carService.getCars(i);
+    @GetMapping(value = "/cars/{numberOfCars}")
+    public String printCarsList(ModelMap model, @PathVariable int numberOfCars) {
+        List<Car> cars = carService.getCars(numberOfCars);
         model.addAttribute("carsList", cars);
         return "cars";
     }
